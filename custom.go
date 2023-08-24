@@ -1,8 +1,8 @@
 package esquery
 
 import (
-	"github.com/elastic/go-elasticsearch/v7"
-	"github.com/elastic/go-elasticsearch/v7/esapi"
+	opensearch "github.com/opensearch-project/opensearch-go/v2"
+	esapi "github.com/opensearch-project/opensearch-go/v2/opensearchapi"
 )
 
 // CustomQueryMap represents an arbitrary query map for custom queries.
@@ -28,7 +28,7 @@ func (m *CustomQueryMap) Map() map[string]interface{} {
 // or more search options can be provided as well. It returns the standard
 // Response type of the official Go client.
 func (m *CustomQueryMap) Run(
-	api *elasticsearch.Client,
+	api *opensearch.Client,
 	o ...func(*esapi.SearchRequest),
 ) (res *esapi.Response, err error) {
 	return Search().Query(m).Run(api, o...)

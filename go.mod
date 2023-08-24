@@ -1,10 +1,11 @@
-module github.com/aquasecurity/esquery
+module github.com/certsio/esquery
 
-go 1.13
+go 1.20
 
 require (
-	github.com/elastic/go-elasticsearch/v7 v7.6.0
 	github.com/fatih/structs v1.1.0
-	github.com/jgroeneveld/schema v1.0.0 // indirect
 	github.com/jgroeneveld/trial v2.0.0+incompatible
+	github.com/opensearch-project/opensearch-go/v2 v2.3.0
 )
+
+require github.com/jgroeneveld/schema v1.0.0 // indirect

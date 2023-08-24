@@ -1,9 +1,9 @@
 # esquery
 
-[![](https://img.shields.io/static/v1?label=godoc&message=reference&color=blue&style=flat-square)](https://godoc.org/github.com/aquasecurity/esquery) [![](https://img.shields.io/github/license/aquasecurity/esquery?style=flat-square)](LICENSE) [![Build Status](https://travis-ci.org/aquasecurity/esquery.svg?branch=master)](https://travis-ci.org/aquasecurity/esquery)
+[![](https://img.shields.io/static/v1?label=godoc&message=reference&color=blue&style=flat-square)](https://godoc.org/github.com/aquasecurity/esquery) [![](https://img.shields.io/github/license/certsio/esquery?style=flat-square)](LICENSE) [![Build Status](https://travis-ci.org/certsio/esquery.svg?branch=master)](https://travis-ci.org/certsio/esquery)
 
 
-**A non-obtrusive, idiomatic and easy-to-use query and aggregation builder for the [official Go client](https://github.com/elastic/go-elasticsearch) for [ElasticSearch](https://www.elastic.co/products/elasticsearch).**
+**A non-obtrusive, idiomatic and easy-to-use query and aggregation builder for the [official Go client](github.com/opensearch-project/opensearch-go) for OpenSearch.**
 
 ## Table of Contents
 
@@ -35,7 +35,7 @@ This is an early release, API may still change.
 `esquery` is a Go module. To install, simply run this in your project's root directory:
 
 ```bash
-go get github.com/aquasecurity/esquery
+go get github.com/certsio/esquery
 ```
 
 ## Usage
@@ -51,13 +51,13 @@ import (
 	"context"
 	"log"
 
-	"github.com/aquasecurity/esquery"
-	"github.com/elastic/go-elasticsearch/v7"
+	"github.com/certsio/esquery"
+	"github.com/opensearch-project/opensearch-go/v2"
 )
 
 func main() {
-    // connect to an ElasticSearch instance
-    es, err := elasticsearch.NewDefaultClient()
+    // connect to an OpenSearch instance
+    es, err := opensearch.NewDefaultClient()
     if err != nil {
         log.Fatalf("Failed creating client: %s", err)
     }
@@ -92,7 +92,7 @@ func main() {
 
 ## Notes
 
-* `esquery` currently supports version 7 of the ElasticSearch Go client.
+* `esquery` currently supports the OpenSearch V2 Go client.
 * The library cannot currently generate "short queries". For example, whereas
   ElasticSearch can accept this:
 
@@ -116,8 +116,8 @@ func main() {
 
 The following queries are currently supported:
 
-| ElasticSearch DSL       | `esquery` Function    |
-| ------------------------|---------------------- |
+| OpenSearch DSL          | `esquery` Function    |
+|-------------------------|---------------------- |
 | `"match"`               | `Match()`             |
 | `"match_bool_prefix"`   | `MatchBoolPrefix()`   |
 | `"match_phrase"`        | `MatchPhrase()`       |
@@ -144,7 +144,7 @@ The following queries are currently supported:
 
 The following aggregations are currently supported:
 
-| ElasticSearch DSL       | `esquery` Function    |
+| OpenSearch DSL       | `esquery` Function    |
 | ------------------------|---------------------- |
 | `"avg"`                 | `Avg()`               |
 | `"weighted_avg"`        | `WeightedAvg()`       |
@@ -163,7 +163,7 @@ The following aggregations are currently supported:
 
 The following top level options are currently supported:
 
-| ElasticSearch DSL       | `esquery.Search` Function              |
+| OpenSearch DSL       | `esquery.Search` Function              |
 | ------------------------|--------------------------------------- |
 | `"highlight"`           | `Highlight()`                          |
 | `"explain"`             | `Explain()`                            |

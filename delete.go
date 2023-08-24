@@ -3,9 +3,8 @@ package esquery
 import (
 	"bytes"
 	"encoding/json"
-
-	"github.com/elastic/go-elasticsearch/v7"
-	"github.com/elastic/go-elasticsearch/v7/esapi"
+	"github.com/opensearch-project/opensearch-go/v2"
+	esapi "github.com/opensearch-project/opensearch-go/v2/opensearchapi"
 )
 
 // DeleteRequest represents a request to ElasticSearch's Delete By Query API,
@@ -35,7 +34,7 @@ func (req *DeleteRequest) Query(q Mappable) *DeleteRequest {
 
 // Run executes the request using the provided ElasticSearch client.
 func (req *DeleteRequest) Run(
-	api *elasticsearch.Client,
+	api *opensearch.Client,
 	o ...func(*esapi.DeleteByQueryRequest),
 ) (res *esapi.Response, err error) {
 	return req.RunDelete(api.DeleteByQuery, o...)

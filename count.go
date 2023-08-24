@@ -3,9 +3,8 @@ package esquery
 import (
 	"bytes"
 	"encoding/json"
-
-	"github.com/elastic/go-elasticsearch/v7"
-	"github.com/elastic/go-elasticsearch/v7/esapi"
+	"github.com/opensearch-project/opensearch-go/v2"
+	esapi "github.com/opensearch-project/opensearch-go/v2/opensearchapi"
 )
 
 // CountRequest represents a request to get the number of matches for a search
@@ -34,7 +33,7 @@ func (req *CountRequest) Map() map[string]interface{} {
 // more search options can be provided as well. It returns the standard Response
 // type of the official Go client.
 func (req *CountRequest) Run(
-	api *elasticsearch.Client,
+	api *opensearch.Client,
 	o ...func(*esapi.CountRequest),
 ) (res *esapi.Response, err error) {
 	return req.RunCount(api.Count, o...)
